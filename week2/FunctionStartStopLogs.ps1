@@ -13,7 +13,7 @@
         } | Sort-Object Time -Descending
 }
 
-# Interactive console prompt (optional)
+
 $days = Read-Host "Enter number of days (1-365, default 30)"
 if (-not $days) { $days = 30 }
 
