@@ -1,0 +1,1 @@
+﻿Get-WmiObject -List | Where-Object { $_.Name -like "Win32_Net*" } | Sort-Object Name

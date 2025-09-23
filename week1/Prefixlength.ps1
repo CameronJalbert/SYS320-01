@@ -1,0 +1,1 @@
+﻿(Get-NetIPAddress | Where-Object { $_.InterfaceAlias -like "Ethernet" -and $_.AddressFamily -eq "IPv4" }).PrefixLength
