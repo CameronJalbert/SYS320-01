@@ -1,4 +1,5 @@
-﻿$par = Get-Process | Where-Object { $_.ProcessName -eq "chrome" }
+﻿function Start-Champlain {
+$par = Get-Process | Where-Object { $_.ProcessName -eq "chrome" }
 
 if ($par) {
     Get-Process | Where-Object { $_.ProcessName -eq "chrome" } | Stop-Process -Force
@@ -6,4 +7,5 @@ if ($par) {
 } else {
     Start-Process "chrome.exe" "https://www.champlain.edu"
     Write-Host "Chrome was not running. Started Chrome and navigated to Champlain.edu"
+}
 }
