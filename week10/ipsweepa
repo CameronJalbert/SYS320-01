@@ -1,0 +1,27 @@
+#!/bin/bash
+# ActiveIPList.bash
+# Lists active IP addresses in a given /24 network prefix
+
+# Usage: bash ActiveIPList.bash <Prefix>
+if [ $# -ne 1 ]; then
+    echo "Usage: bash ActiveIPList.bash <Prefix>"
+    exit 1
+fi
+
+# Prefix is the first input taken
+prefix=$1
+
+# Verify input length
+if [ ${#prefix} -lt 5 ]; then
+    printf "Prefix length is too short\nPrefix example: 10.0.17\n"
+    exit 1
+fi
+
+# Loop through all possible IPs and ping each one
+for i in {1..254}
+do
+    ip="$prefix.$i"
+    # Ping once (-c 1), suppress errors, and show only responding IPs
+    ping -c 1 -W 1 $ip 2>/dev/null | grep -oE "from $prefix\.[0-9]+" | awk '{print $2}'
+done
+
