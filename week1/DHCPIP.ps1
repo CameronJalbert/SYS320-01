@@ -1,0 +1,1 @@
+﻿Get-CimInstance Win32_NetworkAdapterConfiguration | Select DHCPServer | Format-Table -HideTableHeaders
